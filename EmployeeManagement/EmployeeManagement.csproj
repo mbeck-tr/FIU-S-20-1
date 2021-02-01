@@ -5,7 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="View\EmployeeDetails.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\CSS\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="View\EmployeeDetails.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
