@@ -26,6 +26,10 @@ namespace EmployeeManagement
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseDefaultFiles(); //Muss vor UseStaticFiles in der Pipeline stehen!!!
+
+            app.UseStaticFiles();
+
             app.Use(async (context, next) =>
             {
                 logger.LogInformation("MW1: Incoming Request");
