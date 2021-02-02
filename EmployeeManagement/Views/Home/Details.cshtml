@@ -1,23 +1,23 @@
-﻿@model EmployeeManagement.Models.EmployeeDemo
+﻿@model EmployeeManagement.Models.Employee
 
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Employee Details</title>
+    <title>@ViewData["PageTitle"]</title>
 </head>
 <body>
     <table>
         <tr>
             <td>ID</td>
-            <td>@model.Id</td>
+            <td>@Model.Id</td>
         </tr>
         <tr>
             <td>Name</td>
-            <td>@model.Name</td>
+            <td>@Model.Name</td>
         </tr>
         <tr>
             <td>Department</td>
-            <td>@model.Department</td>
+            <td>@Model.Department</td>
         </tr>
     </table>
 </body>
