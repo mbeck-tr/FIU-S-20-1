@@ -1,7 +1,9 @@
 ﻿using EmployeeManagement.Models;
+using EmployeeManagement.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -46,12 +48,26 @@ namespace EmployeeManagement.Controllers
 
         public ViewResult Details()
         {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
             Employee model = _employeeRepository.GetEmployee(1);
+            sw.Stop();
+
+            Debug.WriteLine("Timer Frequenz: " + Stopwatch.Frequency);
+            Debug.WriteLine("Tick Time: " + 1.0 / Stopwatch.Frequency);
             
-            ViewData["PageTitle"] = "Employee Details";
+            //ViewData["PageTitle"] = "Employee Details";
             //ViewData["Employee"] = model;
 
-            return View(model);
+            ViewBag.PageTitle = "Employee Details";
+            ViewData["TimeSpanTicks"] = sw.ElapsedTicks;
+            ViewData["ms"] = sw.ElapsedMilliseconds;
+
+            HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel();
+            homeDetailsViewModel.Employee = model;
+            homeDetailsViewModel.Headline = "Employee Data";
+
+            return View(homeDetailsViewModel);
         }
     }
 }
