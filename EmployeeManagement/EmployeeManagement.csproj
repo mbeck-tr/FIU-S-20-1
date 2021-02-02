@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="View\EmployeeDetails.cshtml" />
+    <Content Remove="Views\EmployeeDetailsDemo.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="View\EmployeeDetails.cshtml" />
+    <None Include="Views\EmployeeDetailsDemo.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

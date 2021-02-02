@@ -3,30 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EmployeeManagement.Model
+namespace EmployeeManagement.Models
 {
-    public class Employee
+    public class EmployeeDemo
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Department { get; set; }
     }
 
-    public interface IEmployeeRepository
+    public interface IEmployeeRepositoryDemo
     {
-        Employee GetEmployee(int id);
-        void Save(Employee employee);
+        EmployeeDemo GetEmployee(int id);
+        void Save(EmployeeDemo employee);
     }
 
-    public class EmployeeRepository : IEmployeeRepository
+    public class EmployeeRepository : IEmployeeRepositoryDemo
     {
-        public Employee GetEmployee(int id)
+        public EmployeeDemo GetEmployee(int id)
         {
             //Logic to retrieve employee details
             throw new NotImplementedException();
         }
 
-        public void Save(Employee employee)
+        public void Save(EmployeeDemo employee)
         {
             //Logic to save employee details
         }

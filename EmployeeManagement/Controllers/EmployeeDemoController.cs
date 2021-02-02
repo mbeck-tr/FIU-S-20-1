@@ -1,4 +1,4 @@
-﻿using EmployeeManagement.Model;
+﻿using EmployeeManagement.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -6,13 +6,13 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
-namespace EmployeeManagement.Controller
+namespace EmployeeManagement.Controllers
 {
-    public class EmployeeController : Microsoft.AspNetCore.Mvc.Controller
+    public class EmployeeDemoController : Microsoft.AspNetCore.Mvc.Controller
     {
-        private IEmployeeRepository _employeeRepository;
+        private IEmployeeRepositoryDemo _employeeRepository;
 
-        public EmployeeController(IEmployeeRepository employeeRepository)
+        public EmployeeDemoController(IEmployeeRepositoryDemo employeeRepository)
         {
             _employeeRepository = employeeRepository;
         }
@@ -21,7 +21,7 @@ namespace EmployeeManagement.Controller
         //Bsp.    http://localhost:5000/Employee/5
         public IActionResult Details(int id)
         {
-            Employee model = _employeeRepository.GetEmployee(id);
+            EmployeeDemo model = _employeeRepository.GetEmployee(id);
             return View(model);
         }
     }

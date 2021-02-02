@@ -27,13 +27,15 @@ namespace EmployeeManagement
                 app.UseDeveloperExceptionPage();
             }
 
-            DefaultFilesOptions defaultFilesOptions = new DefaultFilesOptions();
-            defaultFilesOptions.DefaultFileNames.Clear();
-            defaultFilesOptions.DefaultFileNames.Add("index.html");
-            defaultFilesOptions.DefaultFileNames.Add("foo.html");
-            defaultFilesOptions.DefaultFileNames.Add("homepage.html");
+            #region Standarddokumentensuche...
+            //DefaultFilesOptions defaultFilesOptions = new DefaultFilesOptions();
+            //defaultFilesOptions.DefaultFileNames.Clear();
+            //defaultFilesOptions.DefaultFileNames.Add("index.html");
+            //defaultFilesOptions.DefaultFileNames.Add("foo.html");
+            //defaultFilesOptions.DefaultFileNames.Add("homepage.html");
 
-            app.UseDefaultFiles(defaultFilesOptions); //Muss vor UseStaticFiles in der Pipeline stehen!!!
+            //app.UseDefaultFiles(defaultFilesOptions); //Muss vor UseStaticFiles in der Pipeline stehen!!!
+            #endregion
 
             app.UseStaticFiles();
 
