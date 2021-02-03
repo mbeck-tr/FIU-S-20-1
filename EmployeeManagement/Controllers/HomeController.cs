@@ -11,18 +11,54 @@ namespace EmployeeManagement.Controllers
 {
     public class HomeController : Controller
     {
+        //Felder
         private readonly IEmployeeRepository _employeeRepository;
 
+        //Konstruktor
         public HomeController(IEmployeeRepository employeeRepository)
         {
             _employeeRepository = employeeRepository;
         }
 
-        public string Index()
+        //Actions
+
+        public ViewResult Index()
         {
-            return _employeeRepository.GetEmployee(2).Name;
+            //Liste aus Repo holen
+            var employees = _employeeRepository.GetAllEmployees();
+            
+            //An View weiterleiten und zurückliefern
+            return View(employees);
         }
 
+        public ViewResult Details()
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            Employee model = _employeeRepository.GetEmployee(1);
+            sw.Stop();
+
+            Debug.WriteLine("Timer Frequenz: " + Stopwatch.Frequency);
+            Debug.WriteLine("Tick Time: " + 1.0 / Stopwatch.Frequency);
+            
+            //ViewData["PageTitle"] = "Employee Details";
+            //ViewData["Employee"] = model;
+
+            ViewBag.Title = "Employee Details"; // ???
+            ViewData["TimeSpanTicks"] = sw.ElapsedTicks;
+            ViewData["ms"] = sw.ElapsedMilliseconds;
+
+            HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel();
+            homeDetailsViewModel.Employee = model;
+            homeDetailsViewModel.Headline = "Employee Data";
+
+            return View(homeDetailsViewModel);
+        }
+
+
+
+
+        #region Beispielmethoden für ActionResult
         public string test()
         {
             return "Test";
@@ -45,29 +81,6 @@ namespace EmployeeManagement.Controllers
             Employee model = _employeeRepository.GetEmployee(1);
             return new JsonResult(model);
         }
-
-        public ViewResult Details()
-        {
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
-            Employee model = _employeeRepository.GetEmployee(1);
-            sw.Stop();
-
-            Debug.WriteLine("Timer Frequenz: " + Stopwatch.Frequency);
-            Debug.WriteLine("Tick Time: " + 1.0 / Stopwatch.Frequency);
-            
-            //ViewData["PageTitle"] = "Employee Details";
-            //ViewData["Employee"] = model;
-
-            ViewBag.PageTitle = "Employee Details";
-            ViewData["TimeSpanTicks"] = sw.ElapsedTicks;
-            ViewData["ms"] = sw.ElapsedMilliseconds;
-
-            HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel();
-            homeDetailsViewModel.Employee = model;
-            homeDetailsViewModel.Headline = "Employee Data";
-
-            return View(homeDetailsViewModel);
-        }
+        #endregion
     }
 }

@@ -1,11 +1,5 @@
-﻿@model EmployeeManagement.ViewModels.HomeDetailsViewModel
+﻿@model HomeDetailsViewModel
 
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>@ViewBag.PageTitle</title>
-</head>
-<body>
     <h3>@Model.Headline</h3>
     <table>
         <tr>
@@ -26,5 +20,8 @@
         Ticks: @ViewData["TimeSpanTicks"]<br/>
         ms: @ViewData["ms"]
     </p>
-</body>
-</html>
+
+@section Script{ 
+    <script src="~/scripts/customScript.js"></script>
+}
+

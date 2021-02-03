@@ -15,13 +15,16 @@ namespace EmployeeManagement.Models
     public interface IEmployeeRepository
     {
         Employee GetEmployee(int id);
+        IEnumerable<Employee> GetAllEmployees();
         //void Save(EmployeeDemo employee);
     }
 
     public class MockEmployeeRepository : IEmployeeRepository
     {
+        //Felder
         private List<Employee> _employeeList;
 
+        //Konstruktor
         public MockEmployeeRepository()
         {
             _employeeList = new List<Employee>()
@@ -32,14 +35,25 @@ namespace EmployeeManagement.Models
             };
         }
 
+        //Methoden
         public Employee GetEmployee(int id)
         {
             return _employeeList.FirstOrDefault(e => e.Id == id);
         }
+
+        public IEnumerable<Employee> GetAllEmployees()
+        {
+            return _employeeList;
+        }
     }
 
-    public class TestRepo : IEmployeeRepository
+    public class DBEmployeeRepository : IEmployeeRepository
     {
+        public IEnumerable<Employee> GetAllEmployees()
+        {
+            throw new NotImplementedException();
+        }
+
         public Employee GetEmployee(int ident)
         {
             return new Employee() { Id = 111, Name = "Michael", Department = "IT" };
