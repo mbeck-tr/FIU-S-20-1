@@ -1,20 +1,29 @@
 ﻿@model HomeDetailsViewModel
 
     <h3>@Model.Headline</h3>
-    <table>
-        <tr>
-            <td>ID</td>
-            <td>@Model.Employee.Id</td>
-        </tr>
-        <tr>
-            <td>Name</td>
-            <td>@Model.Employee.Name</td>
-        </tr>
-        <tr>
-            <td>Department</td>
-            <td>@Model.Employee.Department</td>
-        </tr>
-    </table>
+<br/>
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                <h1>@Model.Employee.Name</h1>
+            </div>
+
+            <div class="card-body text-center">
+                <img class="card-img-top" src="~/Bilder/noimage.png"/>
+
+                <h4>Employee ID: @Model.Employee.Id</h4>
+                <h4>Email: </h4>
+                <h4>Department: @Model.Employee.Department</h4>
+            </div>
+            <div class="card-footer text-center">
+                <a href="#" class="btn btn-primary">Back</a>
+                <a href="#" class="btn btn-primary">Edit</a>
+                <a href="#" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
     <br/>
     <p>
         Ticks: @ViewData["TimeSpanTicks"]<br/>

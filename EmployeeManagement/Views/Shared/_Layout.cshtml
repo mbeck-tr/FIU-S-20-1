@@ -3,13 +3,15 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <link href="~/CSS/website.css" rel="stylesheet"/>
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <div>
+    <div class="container" style="background-color: white;">
         @RenderBody()
     </div>
-    Hallo
+    @*<h2 class="jumbotron" id="Headline" style="background-color: green;">Hallo</h2>*@ 
     @RenderSection("Script", required: false)
 </body>
 </html>
