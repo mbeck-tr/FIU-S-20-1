@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeManagement.Controllers
 {
+    [Route("Home")]
     public class HomeController : Controller
     {
         //Felder
@@ -21,7 +22,9 @@ namespace EmployeeManagement.Controllers
         }
 
         //Actions
-
+        [Route("/")]
+        [RouteAttribute("")]
+        [Route("Index")]
         public ViewResult Index()
         {
             //Liste aus Repo holen
@@ -31,11 +34,13 @@ namespace EmployeeManagement.Controllers
             return View(employees);
         }
 
-        public ViewResult Details()
+        [RouteAttribute("Details/{id?}")] //? kennzeichnet Parameter als optional
+        public ViewResult Details(int? id)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            Employee model = _employeeRepository.GetEmployee(1);
+            //Employee model = _employeeRepository.GetEmployee(id.HasValue ? (int)id : 1);
+            Employee model = _employeeRepository.GetEmployee(id ?? 1);
             sw.Stop();
 
             Debug.WriteLine("Timer Frequenz: " + Stopwatch.Frequency);
