@@ -3,12 +3,32 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet"/>
-    <link href="~/CSS/website.css" rel="stylesheet"/>
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/CSS/website.css" rel="stylesheet" />
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/twitter-bootstrap/js/bootstrap.js"></script>
     <title>@ViewBag.Title</title>
 </head>
 <body>
     <div class="container" style="background-color: white;">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <a class="navbar-brand" asp-controller="home" asp-action="index">
+                <img src="~/Bilder/employees.png" width="30" height="30" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"/>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="home" asp-action="index">List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="home" asp-action="create">Create</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         @RenderBody()
     </div>
     @*<h2 class="jumbotron" id="Headline" style="background-color: green;">Hallo</h2>*@ 
