@@ -37,6 +37,7 @@ namespace EmployeeManagement.Controllers
         [RouteAttribute("Details/{id?}")] //? kennzeichnet Parameter als optional
         public ViewResult Details(int? id)
         {
+            //return "id= " + id.Value.ToString() + " and name "+ name;
             Stopwatch sw = new Stopwatch();
             sw.Start();
             //Employee model = _employeeRepository.GetEmployee(id.HasValue ? (int)id : 1);
@@ -45,7 +46,7 @@ namespace EmployeeManagement.Controllers
 
             Debug.WriteLine("Timer Frequenz: " + Stopwatch.Frequency);
             Debug.WriteLine("Tick Time: " + 1.0 / Stopwatch.Frequency);
-            
+
             //ViewData["PageTitle"] = "Employee Details";
             //ViewData["Employee"] = model;
 
@@ -60,7 +61,24 @@ namespace EmployeeManagement.Controllers
             return View(homeDetailsViewModel);
         }
 
+        [RouteAttribute("Create")]
+        [HttpPost]
+        public IActionResult Create(Employee employee)
+        {
+            if (ModelState.IsValid)
+            {
+                Employee newEmployee = _employeeRepository.Add(employee);
+                return RedirectToAction("details", new { id = newEmployee.Id });
+            }
+            return View();
+        }
 
+        [Route("Create")]
+        [HttpGet]
+        public ViewResult Create()
+        {
+            return View();
+        }
 
 
         #region Beispielmethoden für ActionResult
